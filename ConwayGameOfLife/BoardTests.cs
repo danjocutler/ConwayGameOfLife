@@ -68,6 +68,63 @@ GHI".Trim());
             board.NextGeneration();
 
             Assert.That(board.ToString(), Is.EqualTo(result));
-        }       
+        }
+       
+        [Test]
+        public void NextGeneration_AliveCellWith4OrMoreNeighbours_Dies()
+        {
+            // '#' == Alive
+            // '-' == Dead
+            var board = new GameOfLifeBoard(@"
+##-
+###
+---".Trim());
+
+            var result = @"
+#-#
+#-#
+-#-".Trim();
+            board.NextGeneration();
+
+            Assert.That(board.ToString(), Is.EqualTo(result));
+        }
+
+        [Test]
+        public void NextGeneration_AliveCellWith2Or3Neighbours_Lives()
+        {
+            // '#' == Alive
+            // '-' == Dead
+            var board = new GameOfLifeBoard(@"
+--#
+##-
+---".Trim());
+
+            var result = @"
+-#-
+-#-
+---".Trim();
+            board.NextGeneration();
+
+            Assert.That(board.ToString(), Is.EqualTo(result));
+        }
+
+        [Test]
+        public void NextGeneration_DeadCellWith3AliveNeighbours_Lives()
+        {
+            // '#' == Alive
+            // '-' == Dead
+            var board = new GameOfLifeBoard(@"
+---
+###
+---".Trim());
+
+            var result = @"
+-#-
+-#-
+-#-".Trim();
+            board.NextGeneration();
+
+            Assert.That(board.ToString(), Is.EqualTo(result));
+        } 
     }
 }

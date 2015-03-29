@@ -61,10 +61,10 @@ namespace ConwayGameOfLife
         {
             var nextGen = new List<string>();
 
-            for (var y = 0; y < Height; y++)
+            for (var x = 0; x < Width; x++)
             {
                 var row = "";
-                for (var x = 0; x < Width; x++)
+                for (var y = 0; y < Height; y++)
                 {
                     var change = Rules(x, y);
                     row += change;
@@ -81,10 +81,22 @@ namespace ConwayGameOfLife
 
             if (cell == '#')
             {
-                if (neighbours.Count(neighbour => neighbour == '#') < 2)
+                if (neighbours.Count(neighbour => neighbour == '#') < 2
+                    || neighbours.Count(neighbour => neighbour == '#') > 3)
                 {
                     return '-';
                 }
+                else
+                {
+                    return '#';
+                }
+            }
+            else if (cell == '-')
+            {
+                if (neighbours.Count(neighbour => neighbour == '#') == 3)
+                {
+                    return '#';
+                }         
             }
             return cell;
         }        
