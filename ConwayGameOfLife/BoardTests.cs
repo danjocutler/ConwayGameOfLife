@@ -33,7 +33,24 @@ namespace ConwayGameOfLife
 
             Assert.That(board.Width, Is.EqualTo(5));
             Assert.That(board.Height, Is.EqualTo(5));
-
         }
+
+        [Test]
+        public void CellsOnBoard_Created_HasNeighbours()
+        {
+            var board = new GameOfLifeBoard(@"
+ABC
+DEF
+GHI".Trim());
+
+            Assert.That(board.Neighbours(1, 1).Count(), Is.EqualTo(8));
+            // Assert.That(board.Neighbours(1, 1), Is.EqualTo('A', 'B', 'C', 'D', 'F', 'G', 'H', 'I'));
+        }
+    }
+
+    [TestFixture]
+    public class RulesTests
+    {
+       
     }
 }

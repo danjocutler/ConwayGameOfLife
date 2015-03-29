@@ -17,6 +17,31 @@ namespace ConwayGameOfLife
             _board = board.Split(new [] { Environment.NewLine }, StringSplitOptions.None).ToList();
         }
 
+        public IEnumerable<char> Neighbours(int x, int y)
+        {
+            var location = new List<Coordinates>
+            {
+                new Coordinates(x - 1, y - 1),
+                new Coordinates(x - 1, y),
+                new Coordinates(x - 1, y + 1),
+
+                new Coordinates(x, y - 1),
+                new Coordinates(x, y + 1),
+
+                new Coordinates(x + 1, y - 1),
+                new Coordinates(x + 1, y),
+                new Coordinates(x + 1, y + 1)
+            };
+
+            var neighbours = new List<char>();
+            foreach (var set in location)
+            {
+                var neighbour = _board[set.X][set.Y];
+                neighbours.Add(neighbour);
+            }
+            return neighbours;
+        }
+
 
     }
 }
