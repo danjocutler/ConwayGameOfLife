@@ -51,6 +51,23 @@ GHI".Trim());
     [TestFixture]
     public class RulesTests
     {
-       
+        [Test]
+        public void NextGeneration_AliveCellWith0Or1Neighbour_Dies()
+        {
+            // '#' == Alive
+            // '-' == Dead
+            var board = new GameOfLifeBoard(@"
+---
+##-
+---".Trim());
+
+            var result = @"
+---
+---
+---".Trim();
+            board.NextGeneration();
+
+            Assert.That(board.ToString(), Is.EqualTo(result));
+        }       
     }
 }
