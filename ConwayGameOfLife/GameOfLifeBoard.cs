@@ -28,7 +28,7 @@ namespace ConwayGameOfLife
             return builder.ToString().Trim();
         }
 
-        public IEnumerable<char> Neighbours(int x, int y)
+        public List<char> Neighbours(int x, int y)
         {
             var location = new List<Coordinates>
             {
@@ -61,10 +61,10 @@ namespace ConwayGameOfLife
         {
             var nextGen = new List<string>();
 
-            for (var x = 0; x < Width; x++)
+            for (var x = 0; x < Height; x++)
             {
                 var row = "";
-                for (var y = 0; y < Height; y++)
+                for (var y = 0; y < Width; y++)
                 {
                     var change = Rules(x, y);
                     row += change;
@@ -79,6 +79,14 @@ namespace ConwayGameOfLife
  	        var cell = _board[x][y];
             var neighbours = Neighbours(x, y).ToList();
 
+            if (cell == '-')
+            {
+                if (neighbours.Count(neighbour => neighbour == '#') == 3)
+                {
+                    return '#';
+                }
+            }
+
             if (cell == '#')
             {
                 if (neighbours.Count(neighbour => neighbour == '#') < 2
@@ -90,13 +98,6 @@ namespace ConwayGameOfLife
                 {
                     return '#';
                 }
-            }
-            else if (cell == '-')
-            {
-                if (neighbours.Count(neighbour => neighbour == '#') == 3)
-                {
-                    return '#';
-                }         
             }
             return cell;
         }        
