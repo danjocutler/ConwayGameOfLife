@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ConwayGameOfLife
 {
-    class GameOfLifeBoard
+    public class GameOfLifeBoard
     {
         private List<string> _board;
 
-        public int Width { get { return _board.Max(height => height.Length); } }
+        public int Width { get { return _board.Max(line => line.Length); } }
         public int Height { get { return _board.Count; } }
 
         public GameOfLifeBoard(string board)
@@ -30,29 +30,22 @@ namespace ConwayGameOfLife
 
         public List<char> Neighbours(int x, int y)
         {
-            var location = new List<Coordinates>
-            {
-                new Coordinates(x - 1, y - 1),
-                new Coordinates(x - 1, y),
-                new Coordinates(x - 1, y + 1),
-
-                new Coordinates(x, y - 1),
-                new Coordinates(x, y + 1),
-
-                new Coordinates(x + 1, y - 1),
-                new Coordinates(x + 1, y),
-                new Coordinates(x + 1, y + 1)
-            };
-
             var neighbours = new List<char>();
-            foreach (var set in location)
-            {
-                try
+            for (int i = -1; i <= 1; i++)
+			{
+                for (int j = -1; j <= 1; j++)
+			{
+                if (i != 0 || j != 0)
                 {
-                    var neighbour = _board[set.X][set.Y];
-                    neighbours.Add(neighbour);
+                    try
+                    {
+                        var neighbour = _board[x + i][y + j];
+                        neighbours.Add(neighbour);
+                    }
+                    catch { }
                 }
-                catch { }
+       
+			}         
             }
             return neighbours;
         }
@@ -78,26 +71,20 @@ namespace ConwayGameOfLife
         {
  	        var cell = _board[x][y];
             var neighbours = Neighbours(x, y).ToList();
+            var aliveNeighbours = neighbours.Count(state => state == '#');
 
-            if (cell == '-')
+            if (cell == '-' && aliveNeighbours == 3)
             {
-                if (neighbours.Count(neighbour => neighbour == '#') == 3)
-                {
-                    return '#';
-                }
+                return '#';
             }
-
-            if (cell == '#')
+            else if (cell == '#')
             {
-                if (neighbours.Count(neighbour => neighbour == '#') < 2
-                    || neighbours.Count(neighbour => neighbour == '#') > 3)
+                if (aliveNeighbours < 2
+                    || aliveNeighbours > 3)
                 {
                     return '-';
                 }
-                else
-                {
-                    return '#';
-                }
+                return '#';
             }
             return cell;
         }        
