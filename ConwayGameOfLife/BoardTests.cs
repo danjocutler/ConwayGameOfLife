@@ -36,7 +36,7 @@ namespace ConwayGameOfLife
         }
 
         [Test]
-        public void CellsOnBoard_Created_HasNeighbours()
+        public void CellOnBoard_Surrounded_Has8Neighbours()
         {
             var board = new GameOfLifeBoard(@"
 ABC
@@ -46,11 +46,24 @@ GHI".Trim());
             Assert.That(board.Neighbours(1, 1).Count(), Is.EqualTo(8));
             // Assert.That(board.Neighbours(1, 1), Is.EqualTo('A', 'B', 'C', 'D', 'F', 'G', 'H', 'I'));
         }
+
+        [Test]
+        public void CellOnBoard_OnTheEdge_Has8Neighbours()
+        {
+            var board = new GameOfLifeBoard(@"
+ABC
+DEF
+GHI".Trim());
+
+            Assert.That(board.Neighbours(0, 0).Count(), Is.EqualTo(8));
+            Assert.That(board.Neighbours(0, 1).Count(), Is.EqualTo(8));
+        }
     }
 
     [TestFixture]
     public class RulesTests
     {
+
         [Test]
         public void NextGeneration_AliveCellWith0Or1Neighbour_Dies()
         {

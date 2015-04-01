@@ -8,21 +8,25 @@ using System.Timers;
 namespace ConwayGameOfLife
 {
     class Program
-        /*The following variables can be put as a parameter in the GameOfLifeBoard
-         * at the bottom of this page (line 107). 
-         * Feel free to mess around with the editor variable, adding live and dead
-         * cells as you see fit, but all the other variables are common game of life
-         * patterns, so please leave them be, just add them as a parameter and enjoy the show! */
+
     {
         static void Main(string[] args)
         {
+        //    Timer timer = new Timer();
+        //    timer.Elapsed += new ElapsedEventHandler(Game);
+        //    timer.Interval = 250;
+        //    timer.Start();
+        //}
 
-            var test = @"
--#--
--#--
--#--
-----".Trim();
-            
+        //public static void Game(object sender, ElapsedEventArgs e)
+        //{
+
+            /*The following variables can be put as a parameter in the GameOfLifeBoard
+             * at the bottom of this page (line 123). 
+             * Feel free to mess around with the editor variable, adding live and dead
+             * cells as you see fit, but all the other variables are common game of life
+             * patterns, so please leave them be, just add them as a parameter and enjoy the show! */
+
             var editor = @"
 ----------------------------------------------------------------------
 ----------------------------------------------------------------------
@@ -116,7 +120,7 @@ namespace ConwayGameOfLife
 --------------------------------------
 --------------------------------------".Trim();
 
-            var board = new GameOfLifeBoard(editor);
+            var board = new GameOfLifeBoard(oscillators);
 
             while (true)
             {
@@ -124,7 +128,6 @@ namespace ConwayGameOfLife
                 var output = board.ToString();
                 Console.Write(output);
                 board.NextGeneration();
-
             }
         }
     }
