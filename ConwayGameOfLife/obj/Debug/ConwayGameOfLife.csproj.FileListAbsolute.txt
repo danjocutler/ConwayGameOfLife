@@ -6,3 +6,5 @@ C:\Users\Dan\Documents\Visual Studio 2013\Projects\ConwayGameOfLife\ConwayGameOf
 C:\Users\Dan\Documents\Visual Studio 2013\Projects\ConwayGameOfLife\ConwayGameOfLife\obj\Debug\ConwayGameOfLife.exe
 C:\Users\Dan\Documents\Visual Studio 2013\Projects\ConwayGameOfLife\ConwayGameOfLife\obj\Debug\ConwayGameOfLife.pdb
 C:\Users\Dan\Documents\Visual Studio 2013\Projects\ConwayGameOfLife\ConwayGameOfLife\obj\Debug\ConwayGameOfLife.csprojResolveAssemblyReference.cache
+C:\Users\Dan\documents\visual studio 2013\Projects\ConwayGameOfLife\ConwayGameOfLife\bin\Debug\ConwayGameOfLife.exe.CodeAnalysisLog.xml
+C:\Users\Dan\documents\visual studio 2013\Projects\ConwayGameOfLife\ConwayGameOfLife\bin\Debug\ConwayGameOfLife.exe.lastcodeanalysissucceeded
