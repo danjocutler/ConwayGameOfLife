@@ -30,29 +30,27 @@ namespace ConwayGameOfLife
 
         public List<char> Neighbours(int x, int y)
         {
+            var cell = _board[x][y];
             var neighbours = new List<char>(8);
-            for (int i = -1; i <= 1; i++)
-			{
-                for (int j = -1; j <= 1; j++)
+            if (cell != 'o')
+            {
+                for (int i = -1; i <= 1; i++)
                 {
-                    if (i != 0 || j != 0)
+                    for (int j = -1; j <= 1; j++)
                     {
-
-                        try
+                        if (i != 0 || j != 0)
                         {
-                            var neighbour = _board[x + i][y + j];
-                            neighbours.Add(neighbour);
+                            try
+                            {
+                                var neighbour = _board[x + i][y + j];
+                                neighbours.Add(neighbour);
+                            }
+                            catch
+                            {
+                            }
                         }
-                        catch //(Exception e)
-                        {
-                            //    Console.WriteLine("An error occurred: '{0}'", e);
-                        }
-                        //finally
-                        //{
-                        //    Console.WriteLine("Go away, error!");
-                        //}
                     }
-                }  
+                }
             }
             return neighbours;
         }
