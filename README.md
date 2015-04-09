@@ -28,10 +28,10 @@ Tech
 
  Issues/challenges/interesting points
  ------------------------
- At the moment, I am having an issue with the board getting index and argument
- OutOfRangeExceptions. I believe this comes from the cells around the edge of the board
- trying to find neighbours that aren't there. I'm still trying to find a way
- to remedy this.
+ My main issue during this kata was with the board getting index and argument
+ OutOfRangeExceptions. This came from the cells around the edge of the board
+ trying to find neighbours that weren't there. To remedy this, I added a third character, 'o', around
+ the edge of all the boards, as a border, which were not factored into needing access to neighbours.
 
  I enjoyed using the StringBuilder to create the board, and actually visually
  create a board that could be rendered and seen on the screen. This made manually creating
