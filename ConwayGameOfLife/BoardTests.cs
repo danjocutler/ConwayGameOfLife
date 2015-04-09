@@ -48,7 +48,18 @@ GHI".Trim());
         }
 
         [Test]
-        public void CellOnBoard_OnTheEdge_HasFewerThan8Neighbours()
+        public void CellOnBoard_OnTheEdge_HasFiveNeighbours()
+        {
+            var board = new GameOfLifeBoard(@"
+ABC
+DEF
+GHI".Trim());
+
+            Assert.That(board.Neighbours(0, 1).Count(), Is.EqualTo(5));
+        }
+
+        [Test]
+        public void CellOnBoard_OnTheCorner_HasThreeNeighbours()
         {
             var board = new GameOfLifeBoard(@"
 ABC
@@ -56,7 +67,6 @@ DEF
 GHI".Trim());
 
             Assert.That(board.Neighbours(0, 0).Count(), Is.EqualTo(3));
-            Assert.That(board.Neighbours(0, 1).Count(), Is.EqualTo(5));
         }
     }
 
