@@ -13,7 +13,7 @@ namespace ConwayGameOfLife
         static void Main(string[] args)
         {
             /*The following variables can be put as a parameter in the GameOfLifeBoard
-             * at the bottom of this page (line 123). 
+             * at the bottom of this page (line 126). 
              * Feel free to mess around with the editor variable, adding live and dead
              * cells as you see fit, but all the other variables are common game of life
              * patterns, so please leave them be, just add them as a parameter and enjoy the show! */
