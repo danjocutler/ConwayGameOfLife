@@ -46,8 +46,7 @@ namespace ConwayGameOfLife
                                 neighbours.Add(neighbour);
                             }
                             catch
-                            {
-                            }
+                            { }
                         }
                     }
                 }
