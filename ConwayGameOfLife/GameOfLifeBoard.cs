@@ -28,6 +28,11 @@ namespace ConwayGameOfLife
             return builder.ToString().Trim();
         }
 
+        private bool CurrentCell(int i, int j)
+        {
+            return i == 0 && j == 0;
+        }
+
         public List<char> Neighbours(int x, int y)
         {
             var cell = _board[x][y];
@@ -37,16 +42,17 @@ namespace ConwayGameOfLife
                 for (int i = -1; i <= 1; i++)
                 {
                     for (int j = -1; j <= 1; j++)
-                    {
-                        if (i != 0 || j != 0)
+                    {                       
+                        if (CurrentCell(i, j) == false)
                         {
                             try
                             {
                                 var neighbour = _board[x + i][y + j];
                                 neighbours.Add(neighbour);
                             }
-                            catch
-                            { }
+                            catch 
+                            {
+                            }
                         }
                     }
                 }
