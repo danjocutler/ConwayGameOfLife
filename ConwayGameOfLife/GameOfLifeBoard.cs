@@ -33,16 +33,6 @@ namespace ConwayGameOfLife
             return i == 0 && j == 0;
         }
 
-        private char Dead()
-        {
-            return '-';
-        }
-
-        private char Alive()
-        {
-            return '#';
-        }
-
         public List<char> Neighbours(int x, int y)
         {
             var cell = _board[x][y];
@@ -106,6 +96,17 @@ namespace ConwayGameOfLife
                 return Alive();
             }
             return cell;
-        }        
+        }
+
+
+        private char Dead()
+        {
+            return '-';
+        }
+
+        private char Alive()
+        {
+            return '#';
+        }
     }
 }
