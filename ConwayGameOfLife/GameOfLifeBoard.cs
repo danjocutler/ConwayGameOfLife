@@ -33,6 +33,16 @@ namespace ConwayGameOfLife
             return i == 0 && j == 0;
         }
 
+        private char Dead()
+        {
+            return '-';
+        }
+
+        private char Alive()
+        {
+            return '#';
+        }
+
         public List<char> Neighbours(int x, int y)
         {
             var cell = _board[x][y];
@@ -81,19 +91,19 @@ namespace ConwayGameOfLife
         {
  	        var cell = _board[x][y];
             var neighbours = Neighbours(x, y).ToList();
-            var aliveNeighbours = neighbours.Count(state => state == '#');
+            var aliveNeighboursCount = neighbours.Count(state => state == '#');
 
-            if (cell == '-' && aliveNeighbours == 3)
+            if (cell == Dead() && aliveNeighboursCount == 3)
             {
-                return '#';
+                return Alive();
             }
-            else if (cell == '#')
+            else if (cell == Alive())
             {
-                if (aliveNeighbours < 2 || aliveNeighbours > 3)
+                if (aliveNeighboursCount < 2 || aliveNeighboursCount > 3)
                 {
-                    return '-';
+                    return Dead();
                 }
-                return '#';
+                return Alive();
             }
             return cell;
         }        
